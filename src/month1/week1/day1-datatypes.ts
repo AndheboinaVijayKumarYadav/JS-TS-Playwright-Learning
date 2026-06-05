@@ -52,3 +52,24 @@ console.log(retries) // 2
 // === used in all assertions
 // ?? used for all env variable defaults
 // ternary used in playwright.config.ts for CI settings
+
+// ── typeof null DANGER ───────────────────────
+console.log(typeof null)          // 'object' — famous JS bug
+
+// WRONG — null passes object check
+const data = null
+if (typeof data === 'object') {
+  // data.property would crash here
+  console.log('passed — but data is null!')
+}
+
+// CORRECT — always check null explicitly
+if (data !== null && typeof data === 'object') {
+  console.log('safe to access properties')
+} else {
+  console.log('data is null — handled safely')
+}
+
+// TYPESCRIPT WAY — optional chaining
+const result = null
+console.log(result?.toString() ?? 'was null') // 'was null'
