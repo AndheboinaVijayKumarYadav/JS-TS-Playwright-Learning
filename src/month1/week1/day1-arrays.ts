@@ -66,3 +66,25 @@ let found = arr12.find(x => x > 2);
 console.log(found); // returns 3
 console.log(arr12); // arr12 is still [1, 2, 3, 4]  
 
+// 13. some() - tests whether at least one element in the array passes the test implemented by the provided function
+let arr13: number[] = [1, 2, 3, 4];
+console.log(arr13.some(x => x > 3)); // returns true
+console.log(arr13.some(x => x > 4)); // returns false   
+
+// 14. every() - tests whether all elements in the array pass the test implemented by the provided function
+let arr14: number[] = [1, 2, 3, 4];
+console.log(arr14.every(x => x > 0)); // returns true
+console.log(arr14.every(x => x > 2)); // returns false
+
+// 15. forEach() - executes a provided function once for each array element
+let arr15: number[] = [1, 2, 3, 4];
+arr15.forEach(x => console.log(x)); // logs 1, 2, 3, 4 to the console
+console.log(arr15); // arr15 is still [1, 2, 3, 4]
+
+// Playwright connection:
+// filter locked users before data-driven tests
+// map usernames for parameterised tests
+// find specific user for a test scenario
+// reduce — count total failed assertions
+// some   — check if ANY product is out of stock
+// every  — verify ALL items in cart have price > 0
