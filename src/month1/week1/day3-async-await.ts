@@ -153,3 +153,17 @@ service.getMultiple([1, 2, 3]).then(products =>
 //     await this.page.click('#login-btn')
 //   }
 // }
+
+// ❌ Forgetting await — silent bug
+const title1 = page.title()
+console.log(title1) // Promise { <pending> } — not the title
+
+// ✅ With await
+const title2 = await page.title()
+console.log(title2) // 'Swag Labs' — actual value
+
+// ❌ Forgetting await on assertion — test always passes
+expect(page.title()).toBe('Swag Labs') // comparing Promise to string — wrong
+
+// ✅ Correct
+await expect(page).toHaveTitle('Swag Labs')
