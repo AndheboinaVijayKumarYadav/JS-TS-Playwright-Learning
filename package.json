@@ -1,0 +1,13 @@
+{
+  "name": "js-ts-playwright-learning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AndheboinaVijayKumarYadav/JS-TS-Playwright-Learning.git",
+  "author": "AndheboinaVijayKumarYadav <andheboinavijaykumaryadav@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
