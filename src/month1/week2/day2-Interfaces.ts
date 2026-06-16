@@ -77,3 +77,66 @@ interface BlogPost extends Animal, Timestamped {
 // ILoginPage has goto() PLUS login()
 
 console.log(dog)
+
+// ============================================
+// TOPIC 3 — Interface vs Type Alias
+// ============================================
+
+// ── TYPE ALIAS — using 'type' keyword ─────────
+type UserType = {
+  name: string
+  age: number
+}
+
+const u: UserType = { name: 'Vijay', age: 30 }
+
+// At first glance — interface and type look identical:
+interface UserInterface {
+  name: string
+  age: number
+}
+// Both describe the same object shape
+
+// ── WHERE THEY DIFFER ─────────────────────────
+
+// 1. TYPE can do unions — INTERFACE cannot
+type Status = 'active' | 'inactive' | 'pending'  // ✅ only type can do this
+type ID = string | number                        // ✅ only type
+
+// interface Status = 'active' | 'inactive'  // ❌ interface cannot do unions
+
+// 2. TYPE can alias primitives and tuples
+type Coordinates = [number, number]  // tuple
+type Age = number                    // primitive alias
+
+// 3. INTERFACE can be re-opened (declaration merging)
+interface Window {
+  title: string
+}
+interface Window {
+  size: number  // merges with the one above — Window now has both
+}
+// type CANNOT do this — type cannot be redeclared
+
+// 4. Both can extend, slightly different syntax
+interface Admin extends UserInterface {
+  permissions: string[]
+}
+
+type AdminType = UserType & {  // & = intersection (combine)
+  permissions: string[]
+}
+
+console.log(u)
+
+// USE INTERFACE when:
+// ✅ describing object shapes (most common)
+// ✅ you might extend it later
+// ✅ building class contracts (implements)
+// ✅ public API of a library
+
+// USE TYPE when:
+// ✅ union types: 'a' | 'b' | 'c'
+// ✅ primitive aliases: type ID = string
+// ✅ tuples: type Point = [number, number]
+// ✅ complex type operations (mapped, conditional)
